@@ -1,6 +1,26 @@
 Rails.application.routes.draw do
   get 'middleware/bad_kitty', constraints: -> (request) { request.env['hello'].signed_in? }
 
+  # Hello::Routing
+
+  get 'routing/foo' => 'root#index'
+  authenticated do
+    get 'routing/auth' => 'root#index'
+  end
+
+  not_authenticated do
+    get 'routing/not_auth' => 'root#index'
+  end
+
+  current_user -> (u) { u.blank? } do
+    get 'routing/current_user_blank' => 'root#index'
+  end
+
+  current_user -> (u) { u.present? } do
+    get 'routing/current_user_present' => 'root#index'
+  end
+
+  # Hello::Railsy::Controller::KickingConcern
   get 'my_areas/guest_page'
   get 'my_areas/authenticated_page'
   get 'my_areas/onboarding_page'
