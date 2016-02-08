@@ -40,6 +40,23 @@ Rails.application.routes.draw do
     end
   end
 
+
+  # not_authenticated do
+  #   get 'some/route'
+  # end
+  #
+  # authenticated do
+  #   get 'some/route'
+  #
+  #   current_user -> (u) { u.webmaster? } do
+  #     get 'some/route'
+  #   end
+  #
+  #   current_user -> (u) { u.user? } do
+  #     get 'some/route'
+  #   end
+  # end
+
   root to: 'root#index'
   mount Hello::Engine => '/hello'
 end

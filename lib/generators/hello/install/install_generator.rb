@@ -74,6 +74,26 @@ class Hello::InstallGenerator < Rails::Generators::Base
     copy_file 'onboarding/index.html.erb',           'app/views/onboarding/index.html.erb'
   end
 
+  def generate_routing_suggestions
+    my_route %(
+  # not_authenticated do
+  #   get 'some/route'
+  # end
+  #
+  # authenticated do
+  #   get 'some/route'
+  #
+  #   current_user -> (u) { u.webmaster? } do
+  #     get 'some/route'
+  #   end
+  #
+  #   current_user -> (u) { u.user? } do
+  #     get 'some/route'
+  #   end
+  # end
+    )
+  end
+
   # hook_for :test_framework
 
   protected
@@ -83,7 +103,7 @@ class Hello::InstallGenerator < Rails::Generators::Base
     sentinel = /\.routes\.draw do\s*$/
 
     in_root do
-      inject_into_file 'config/routes.rb', "\n  #{routing_code}", after: sentinel, verbose: false, force: false
+      inject_into_file 'config/routes.rb', "\n  #{routing_code}\n", after: sentinel, verbose: false, force: false
     end
   end
 end
