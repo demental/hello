@@ -38,10 +38,10 @@ fr:
       management:
         add_email:
           # TODO: missing translation
-          success: "%{email} was successfully added"
+          success: "%{email} a bien été ajouté"
         remove_email:
           # TODO: missing translation
-          success: "%{email} was successfully removed"
+          success: "%{email} a bien été retiré"
         unlink_access:
           success: "La liaison avec votre appareil a été retirée"
           alert: "Une erreur s'est produite lors de la tentative de suppression du lien avec votre appareil"
